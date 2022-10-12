@@ -19,6 +19,8 @@ public class world {
                 case "l":
                     t[i] = Direction.WEST;
                     break;
+                default:
+                    t[i]=Direction.OTHER;
             }
             i++;
         }
@@ -39,6 +41,9 @@ public class world {
                 case SOUTH->System.out.println("zwierzak chodzi do tyłu!");
                 case WEST->System.out.println("zwierzak skręca w lewo!");
                 case EAST->System.out.println("zwierzak skręca w prawo !");
+                default->{
+
+                }
             }
         }
         System.out.println("Stop");
