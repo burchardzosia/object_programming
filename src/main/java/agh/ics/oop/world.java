@@ -3,6 +3,11 @@ package agh.ics.oop;
 public class world {
     public static void main(String[] args) {
         System.out.println("Start systemu!");
+        Vector2d position1 = new Vector2d(1,2);
+        System.out.println(position1);
+        Vector2d position2 = new Vector2d(-2,1);
+        System.out.println(position2);
+        System.out.println(position1.add(position2));
         Direction[] t = new Direction[args.length];
         int i = 0;
         for (String x : args) {
@@ -27,6 +32,7 @@ public class world {
         run(t);
         System.out.println("koniec pracy!");
     }
+
     public static void run(Direction[] t) {
         for(int i=0;i<t.length-1;i++){
             System.out.println(t[i]+",");
@@ -42,7 +48,6 @@ public class world {
                 case WEST->System.out.println("zwierzak skręca w lewo!");
                 case EAST->System.out.println("zwierzak skręca w prawo !");
                 default->{
-
                 }
             }
         }
