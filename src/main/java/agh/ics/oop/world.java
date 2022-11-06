@@ -9,6 +9,10 @@ public class world {
         System.out.println(position2);
         System.out.println(position1.add(position2));
         Direction[] t = new Direction[args.length];
+        Animal animal=new Animal();
+        move(args,animal);
+
+
         int i = 0;
         for (String x : args) {
             switch (x) {
@@ -30,6 +34,7 @@ public class world {
             i++;
         }
         run(t);
+
         System.out.println("koniec pracy!");
     }
 
@@ -52,5 +57,17 @@ public class world {
             }
         }
         System.out.println("Stop");
+    }
+
+    public static void move(String[] args,Animal animal){
+        MoveDirection[] args2 = OptionsParser.parser(args);
+        Vector2d position1 = new Vector2d(1,2);
+        for (MoveDirection x : args2) {
+            animal.move(x);
+
+        }
+        System.out.println(animal.toString());
+
+
     }
 }
