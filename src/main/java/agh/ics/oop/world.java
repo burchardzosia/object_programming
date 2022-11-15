@@ -2,6 +2,7 @@ package agh.ics.oop;
 
 public class world {
     public static void main(String[] args) {
+        /**
         System.out.println("Start systemu!");
         Vector2d position1 = new Vector2d(1,2);
         System.out.println(position1);
@@ -9,8 +10,17 @@ public class world {
         System.out.println(position2);
         System.out.println(position1.add(position2));
         Direction[] t = new Direction[args.length];
+        */
+
+        MoveDirection[] directions = new OptionsParser().parser(args);
+        IWorldMap map = new RectangularMap(10, 5);
+        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
+        IEngine engine = new SimulationEngine(directions, map, positions);
+        engine.run();
+        /**
         Animal animal=new Animal();
         move(args,animal);
+
 
 
         int i = 0;
@@ -36,6 +46,7 @@ public class world {
         run(t);
 
         System.out.println("koniec pracy!");
+         */
     }
 
     public static void run(Direction[] t) {

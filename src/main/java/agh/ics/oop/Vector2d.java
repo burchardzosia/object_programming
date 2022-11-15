@@ -1,8 +1,8 @@
 package agh.ics.oop;
 import java.util.Objects;
 public class Vector2d {
-    private final int x;
-    private final int y;
+     final int x;
+     final int y;
 
     public Vector2d(int x,int y){
         this.x=x;
@@ -46,4 +46,6 @@ public class Vector2d {
     public int hashCode(){
         return Objects.hash(x,y);
     }
+
+
 }
