@@ -16,25 +16,23 @@ public class SimulationEngine implements IEngine{
             if(map.place(animal)){
                 this.animals.add(animal);
             }
-
         }
-
-
     }
 
     @Override
     public void run() {
         int tabLength=animals.size();
         Animal[] tabAnimals= new Animal[tabLength];
-
         animals.toArray(tabAnimals);
         int i=0;
         if(tabLength!=0){
             for (MoveDirection x :tab ) {
                 tabAnimals[i%tabLength].move(x);
                 i++;
+                System.out.println(map);
             }
         }
+
 
     }
 }

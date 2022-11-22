@@ -39,7 +39,6 @@ public class Animal {
 
                 temp_position = position.add(orientation.toUnitVector());
                 if(map.canMoveTo(temp_position)){
-
                         position=temp_position;
                 }
 
