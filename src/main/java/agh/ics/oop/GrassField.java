@@ -1,8 +1,4 @@
 package agh.ics.oop;
-
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.lang.Math;
 public class GrassField extends AbstractWorldMap{
@@ -11,9 +7,6 @@ public class GrassField extends AbstractWorldMap{
     public GrassField(int size){
         this.size=size;
         addingGrass(size);
-
-
-
     }
     private void addingGrass(int size) {
         Random generator = new Random();
@@ -25,7 +18,7 @@ public class GrassField extends AbstractWorldMap{
             Vector2d grassPosition = new Vector2d(x, y);
             if (!isOccupied(grassPosition)) {
                 grass object_grass=new grass(grassPosition);
-                this.grassOnMap.add(object_grass);
+                this.grassOnMap.put(grassPosition,object_grass);
             }
         }
     }
@@ -40,12 +33,12 @@ public class GrassField extends AbstractWorldMap{
     }
     @Override
     public Vector2d RightBorder(){
-        Vector2d upperRightVector=AnimalsOnMap.get(1).getPosition();
-        for(Animal x:AnimalsOnMap){
-            upperRightVector=x.getPosition().upperRight(upperRightVector);
+        Vector2d upperRightVector= new Vector2d(0,0);
+        for(Vector2d x:AnimalsOnMap.keySet()){
+            upperRightVector=x.upperRight(upperRightVector);
         }
-        for(grass xG: grassOnMap){
-            upperRightVector=xG.getPosition().upperRight(upperRightVector);
+        for(Vector2d xG: grassOnMap.keySet()){
+            upperRightVector=xG.upperRight(upperRightVector);
 
         }
         return upperRightVector;
@@ -55,12 +48,12 @@ public class GrassField extends AbstractWorldMap{
 
     @Override
     public Vector2d LeftBorder(){
-        Vector2d LowerLeftVector=AnimalsOnMap.get(1).getPosition();
-        for(Animal x:AnimalsOnMap){
-            LowerLeftVector=x.getPosition().lowerLeft(LowerLeftVector);
+        Vector2d LowerLeftVector=new Vector2d(Integer.MAX_VALUE,Integer.MAX_VALUE);
+        for(Vector2d x:AnimalsOnMap.keySet()){
+            LowerLeftVector=x.lowerLeft(LowerLeftVector);
         }
-        for(grass xG: grassOnMap){
-            LowerLeftVector=xG.getPosition().lowerLeft(LowerLeftVector);
+        for(Vector2d xG: grassOnMap.keySet()){
+            LowerLeftVector=xG.lowerLeft(LowerLeftVector);
 
         }
         return LowerLeftVector;
