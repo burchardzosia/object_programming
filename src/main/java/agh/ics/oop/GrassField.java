@@ -1,4 +1,8 @@
 package agh.ics.oop;
+
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.lang.Math;
 public class GrassField extends AbstractWorldMap{
@@ -7,6 +11,9 @@ public class GrassField extends AbstractWorldMap{
     public GrassField(int size){
         this.size=size;
         addingGrass(size);
+
+
+
     }
     private void addingGrass(int size) {
         Random generator = new Random();

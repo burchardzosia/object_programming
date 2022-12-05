@@ -1,11 +1,11 @@
 package agh.ics.oop;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 public class Animal {
     private MapDirection orientation =MapDirection.NORTH;;
     private Vector2d position=new Vector2d(2,2);
     private IWorldMap map;
-    private ArrayList<IPositionObserver> ObserversArray= new ArrayList();
+    private List<IPositionChangeObserver> observers = new ArrayList<>();
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.orientation = MapDirection.NORTH;
         this.position = initialPosition;
@@ -15,11 +15,11 @@ public class Animal {
     @Override
     public String toString(){
         return switch (this.orientation){
-        case EAST -> "E";
-        case WEST -> "W";
-        case NORTH -> "N";
-        case SOUTH -> "S";
-    };
+            case EAST -> "E";
+            case WEST -> "W";
+            case NORTH -> "N";
+            case SOUTH -> "S";
+        };
     }
 
     public Vector2d getPosition(){
@@ -40,15 +40,17 @@ public class Animal {
 
                 temp_position = position.add(orientation.toUnitVector());
                 if(map.canMoveTo(temp_position)){
-
-                        position=temp_position;
+                    this.positionChanged(this.position, temp_position);
+                    position=temp_position;
                 }
 
             }
             case BACKWARD -> {
                 temp_position = position.subtract(orientation.toUnitVector());
                 if(map.canMoveTo(temp_position)){
+                    this.positionChanged(this.position, temp_position);
                     position=temp_position;
+
                 }
 
             }
@@ -56,17 +58,17 @@ public class Animal {
 
 
     }
-    public void addObserver(IPositionObserver observer){
-        ObserversArray.add(observer);
+    public void addObserver(IPositionChangeObserver observer){
+        observers.add(observer);
     }
 
-    public void removeObserver(IPositionObserver observer){
-        ObserversArray.remove(observer);
+    public void removeObserver(IPositionChangeObserver observer){
+        observers.remove(observer);
     }
 
-    private void positionChanged(Vector2d oldposition, Vector2d newposition){
-        for(IPositionObserver observer: ObserversArray){
-            observer.positionChanged(oldposition,newposition);
+    public void positionChanged(Vector2d oldPosition, Vector2d newPosition){
+        for(IPositionChangeObserver observer:observers){
+            observer.positionChanged(oldPosition, newPosition);
         }
     }
 

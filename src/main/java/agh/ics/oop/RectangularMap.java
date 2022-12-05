@@ -27,6 +27,8 @@ public class RectangularMap extends AbstractWorldMap  {
     public Vector2d RightBorder() {return new Vector2d(this.width,this.height);}
 
 
+    @Override
+    public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
 
-
+    }
 }

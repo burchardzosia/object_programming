@@ -16,7 +16,6 @@ public class SimulationEngine implements IEngine{
             if(map.place(animal)){
                 this.animals.add(animal);
             }
-
         }
     }
 
@@ -37,3 +36,4 @@ public class SimulationEngine implements IEngine{
 
     }
 }
+
