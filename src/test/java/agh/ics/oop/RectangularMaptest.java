@@ -1,5 +1,6 @@
 package agh.ics.oop;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,14 +19,14 @@ public class RectangularMaptest {
             Animal animal2 = new Animal(map,pos2);
             Animal animal3=new Animal(map,pos3);
             Animal animal4=new Animal(map,pos);
-            assertFalse(map.canMoveTo(new Vector2d(2,10)));
+
             assertTrue(map.place(animal));
             assertTrue(map.place(animal2));
             assertTrue(map.place(animal3));
+            Assertions.assertThrows(IllegalArgumentException.class, ()->map.place(animal3));
             assertEquals(map.objectAt(pos), animal);
             assertTrue(map.isOccupied(pos2));
-            assertFalse(map.canMoveTo(pos2));
-            assertFalse(map.place(animal4));
+
 
         }
 

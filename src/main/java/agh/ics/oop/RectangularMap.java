@@ -19,11 +19,11 @@ public class RectangularMap extends AbstractWorldMap  {
 
 
 
-    @Override
+
     public Vector2d LeftBorder() {return new Vector2d(0,0);}
 
 
-    @Override
+
     public Vector2d RightBorder() {return new Vector2d(this.width,this.height);}
 
 

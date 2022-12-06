@@ -26,6 +26,7 @@ public class GrassField extends AbstractWorldMap{
             if (!isOccupied(grassPosition)) {
                 grass object_grass=new grass(grassPosition);
                 this.grassOnMap.put(grassPosition,object_grass);
+                this.mapBoundary.add(grassPosition);
             }
         }
     }
@@ -38,6 +39,9 @@ public class GrassField extends AbstractWorldMap{
         }
         return true;
     }
+
+
+    /*
     @Override
     public Vector2d RightBorder(){
         Vector2d upperRightVector= new Vector2d(0,0);
@@ -65,6 +69,10 @@ public class GrassField extends AbstractWorldMap{
         }
         return LowerLeftVector;
     }
+    */
+
+
+
 
 
 

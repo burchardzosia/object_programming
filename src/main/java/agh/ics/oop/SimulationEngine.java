@@ -30,6 +30,7 @@ public class SimulationEngine implements IEngine{
                 tabAnimals[i%tabLength].move(x);
                 i++;
                 System.out.println(map);
+
             }
         }
 

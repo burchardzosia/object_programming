@@ -1,5 +1,8 @@
 package agh.ics.oop;
 
+import agh.ics.oop.gui.App;
+import javafx.application.Application;
+
 public class world {
     public static void main(String[] args) {
         /**
@@ -11,12 +14,26 @@ public class world {
         System.out.println(position1.add(position2));
         Direction[] t = new Direction[args.length];
         */
+        /**
+        try{
+            MoveDirection[] directions = new OptionsParser().parser(args);
+            IWorldMap map=new GrassField(10);
+            Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
+            IEngine engine = new SimulationEngine(directions, map, positions);
+            engine.run();
+            Application.launch(App.class, args);
 
-        MoveDirection[] directions = new OptionsParser().parser(args);
-        IWorldMap map=new GrassField(10);
-        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
-        IEngine engine = new SimulationEngine(directions, map, positions);
-        engine.run();
+        }
+        catch(IllegalArgumentException ex){
+            System.out.println("EROR");
+
+        }
+         */
+
+            Application.launch(App.class, args);
+
+
+
 
 
 

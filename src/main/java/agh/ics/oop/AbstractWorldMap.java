@@ -9,6 +9,7 @@ public abstract class AbstractWorldMap implements IWorldMap,IPositionChangeObser
 
     protected HashMap<Vector2d, grass> grassOnMap = new HashMap<>();
     protected HashMap<Vector2d, Animal> AnimalsOnMap = new HashMap<>();
+    public MapBoundary mapBoundary = new MapBoundary();
 
     @Override
     public boolean isOccupied(Vector2d position) {return (objectAt(position)!=null);}
@@ -27,18 +28,19 @@ public abstract class AbstractWorldMap implements IWorldMap,IPositionChangeObser
     public boolean place(Animal animal) {
         if (this.canMoveTo(animal.getPosition())) {
             AnimalsOnMap.put(animal.getPosition(),animal);
+            this.mapBoundary.add(animal.getPosition());
+            animal.addObserver(mapBoundary);
             animal.addObserver(this);
             return true;
         }
-        return false;
+        throw new IllegalArgumentException(animal.getPosition()+"this area is occupied");
+
     }
 
-    public abstract  Vector2d LeftBorder();
-    public abstract Vector2d RightBorder();
     @Override
     public String toString() {
         MapVisualizer mapVisualizer = new MapVisualizer(this);
-        return mapVisualizer.draw(this.LeftBorder(), this.RightBorder());
+        return mapVisualizer.draw(mapBoundary.lowerLeft(), mapBoundary.upperRight());
     }
     @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
