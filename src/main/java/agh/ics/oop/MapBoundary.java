@@ -7,7 +7,9 @@ public class MapBoundary implements IPositionChangeObserver{
 
     @Override
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
-        ArrayX.remove(oldPosition);
+        remove(oldPosition);
+        add(newPosition);
+
 
 
 

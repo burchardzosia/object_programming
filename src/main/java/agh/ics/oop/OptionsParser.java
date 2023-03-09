@@ -13,7 +13,7 @@ public class OptionsParser {
                 case "Forward","f" -> args2.add(MoveDirection.FORWARD);
                 case "Backward","b" -> args2.add(MoveDirection.BACKWARD);
                 default ->{
-                    throw new IllegalArgumentException(x + " is not legal move specification");
+                    throw new IllegalArgumentException(x + " Illegal move");
                 }
             }
         }

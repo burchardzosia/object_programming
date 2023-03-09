@@ -1,14 +1,14 @@
 package agh.ics.oop;
 import java.util.ArrayList;
 import java.util.List;
-public class Animal {
+public class Animal implements IMapElement{
     private MapDirection orientation =MapDirection.NORTH;;
     private Vector2d position=new Vector2d(2,2);
     private IWorldMap map;
     private List<IPositionChangeObserver> observers = new ArrayList<>();
-    public Animal(IWorldMap map, Vector2d initialPosition){
+    public Animal(IWorldMap map, Vector2d position){
         this.orientation = MapDirection.NORTH;
-        this.position = initialPosition;
+        this.position = position;
         this.map=map;
     }
 
@@ -22,6 +22,17 @@ public class Animal {
         };
     }
 
+    @Override
+    public String getImageSrc() {
+        return switch (this.getOrientation()) {
+            case SOUTH -> "src/main/resources/down.png";
+            case WEST -> "src/main/resources/left.png";
+            case NORTH -> "src/main/resources/up.png";
+            case EAST -> "src/main/resources/right.png";
+        };
+
+    }
+
     public Vector2d getPosition(){
         return this.position;
     }
@@ -29,7 +40,7 @@ public class Animal {
         return this.orientation;
     }
 
-    public boolean  isAt(Vector2d position){return this.position.equals(position);}
+
 
     void move(MoveDirection direction){
         Vector2d temp_position;
@@ -62,9 +73,6 @@ public class Animal {
         observers.add(observer);
     }
 
-    public void removeObserver(IPositionChangeObserver observer){
-        observers.remove(observer);
-    }
 
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition){
         for(IPositionChangeObserver observer:observers){

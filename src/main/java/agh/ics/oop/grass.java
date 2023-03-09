@@ -2,7 +2,7 @@ package agh.ics.oop;
 
 import java.util.Random;
 
-public class grass {
+public class grass implements IMapElement{
     Vector2d position;
     public grass(Vector2d grassPosition){
         this.position=grassPosition;
@@ -14,6 +14,11 @@ public class grass {
     }
     public String toString(){
         return "*";
+    }
+
+    @Override
+    public String getImageSrc() {
+        return "src/main/resources/grass.png";
     }
 
 }

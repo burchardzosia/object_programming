@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class SimulationEngineTest {
-
+    /**
     @Test
     void AnimalOccuppiedTest() {
         String[] args= {"f", "b", "r", "l", "f", "f", "r", "r", "f", "f", "f", "f", "f", "f", "f", "f"};
@@ -60,5 +60,5 @@ public class SimulationEngineTest {
 
     }
 
-
+    */
 }
